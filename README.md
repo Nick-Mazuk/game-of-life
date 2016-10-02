@@ -13,15 +13,15 @@ Each square of the grid (or pixel on the screen) represents one organism of the 
 ##The New Rules
 Because of the addition of the second species, a new one is added:
 
-- If a square has is surrounded by more of its oposing species than its own, then it will die
+- If a square has is surrounded by more of its opposing species than its own, then it will die
 
 To make the final product have some aesthetic pleasure, some of the numbers for the other rules changed leaving the final ruleset:
 
 1. Every square with less than 2 living neighbors dies from under-population
 2. Any square with 2 or 3 living neighbors lives
 3. Any square with 4 or more living neighbors dies from over-population
-4. Any dead square with 3 or living neighbors and less than 2 oposing neighbors becomes alive
-5. If a square has is surrounded by more of its oposing species than its own, then it will die
+4. Any dead square with 3 or living neighbors and less than 2 opposing neighbors becomes alive
+5. If a square has is surrounded by more of its opposing species than its own, then it will die
 
 ##The Implimentation
 Originally, Conway's Game of Life is mean to be played on an infinite plane, but to make my life easier, I decided to code it on a [flat torus](https://en.wikipedia.org/wiki/Torus#Flat_torus) which has the same properties as the field in <a href="https://en.wikipedia.org/wiki/Asteroids_(video_game)">the game asteroids</a>. This means that the top wraps around to the bottem and the left wraps around to the right.
