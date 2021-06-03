@@ -21,11 +21,12 @@ const generateNewSquares = (): SquareType[][] => {
     return squares
 }
 
+// this game is on a flat torus
 const getNeighbors = (
     squares: SquareType[][],
     row: number,
     col: number
-): { primaryNeighbors: number; successNeighbors: number; deadNeighbors: number } => {
+): { primaryNeighbors: number; successNeighbors: number } => {
     const previousRow = (row + BOARD_HEIGHT - 1) % BOARD_HEIGHT
     const nextRow = (row + 1) % BOARD_HEIGHT
     const previousColumn = (col + BOARD_WIDTH - 1) % BOARD_WIDTH
@@ -43,15 +44,19 @@ const getNeighbors = (
 
     let primaryNeighbors = 0
     let successNeighbors = 0
-    let deadNeighbors = 0
 
     neighbors.forEach((neighbor) => {
         if (neighbor === 'primary') primaryNeighbors++
         else if (neighbor === 'success') successNeighbors++
-        else deadNeighbors++
     })
 
-    return { primaryNeighbors, successNeighbors, deadNeighbors }
+    return { primaryNeighbors, successNeighbors }
+}
+
+const getNextValueIfDead = (primaryNeighbors: number, successNeighbors: number): SquareType => {
+    if (primaryNeighbors >= 3 && successNeighbors <= 2) return 'primary'
+    if (successNeighbors >= 3 && primaryNeighbors <= 2) return 'success'
+    return 'dead'
 }
 
 const getSquareNextValue = (
@@ -60,12 +65,8 @@ const getSquareNextValue = (
     col: number,
     currentValue: SquareType
 ): SquareType => {
-    const { primaryNeighbors, successNeighbors, deadNeighbors } = getNeighbors(squares, row, col)
-    if (currentValue === 'dead') {
-        if (primaryNeighbors >= 3 && successNeighbors <= 2) return 'primary'
-        if (successNeighbors >= 3 && primaryNeighbors <= 2) return 'success'
-        return 'dead'
-    }
+    const { primaryNeighbors, successNeighbors } = getNeighbors(squares, row, col)
+    if (currentValue === 'dead') return getNextValueIfDead(primaryNeighbors, successNeighbors)
     const sameNeighbors = currentValue === 'primary' ? primaryNeighbors : successNeighbors
     const differentNeighbors = currentValue === 'primary' ? successNeighbors : primaryNeighbors
     const totalNeighbors = primaryNeighbors + successNeighbors
@@ -75,7 +76,6 @@ const getSquareNextValue = (
 }
 
 const evolve = (previous: SquareType[][]): SquareType[][] => {
-    console.time('evolve')
     const squares: SquareType[][] = []
     for (const [row, rowElement] of previous.entries()) {
         const rowArray: SquareType[] = []
@@ -85,7 +85,7 @@ const evolve = (previous: SquareType[][]): SquareType[][] => {
 
         squares.push(rowArray)
     }
-    console.timeEnd('evolve')
+
     return squares
 }
 
