@@ -1,9 +1,6 @@
 it('renders', () => {
     cy.visit('/')
 
-    cy.injectAxe()
-    cy.checkA11y()
-
     cy.get('select[title="Evolution speed"]').should('have.value', 'default')
 
     cy.contains('Generation: 1')
