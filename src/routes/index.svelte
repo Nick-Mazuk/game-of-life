@@ -8,8 +8,15 @@
 
     import BoardContainer from '$lib/components/board-container.svelte'
     import { board } from '$lib/stores/board'
+    import { evolutionSpeed } from '$lib/stores/evolution-speed'
+    import type { EvolutionSpeed } from '$lib/types'
 
-    let interval = 250
+    const SPEED_MAP: Record<EvolutionSpeed, number> = {
+        slow: 500,
+        default: 250,
+        fast: 100,
+    }
+
     let isEvolving = false
 
     const timeoutFunction = () => {
@@ -17,7 +24,7 @@
         board.evolve()
         setTimeout(() => {
             timeoutFunction()
-        }, interval)
+        }, SPEED_MAP[$evolutionSpeed])
     }
 
     const startEvolving = () => {
@@ -34,8 +41,8 @@
         else startEvolving()
     }
 
-    const handleSpeedChange = (event: CustomEvent<number>) => {
-        interval = event.detail
+    const handleSpeedChange = (event: CustomEvent<EvolutionSpeed>) => {
+        evolutionSpeed.set(event.detail)
     }
 
 </script>
@@ -47,10 +54,14 @@
     <div class="flex flex-col md:flex-row items-center space-y-6 md:space-y-0">
         <div class="w-full flex justify-center md:justify-start">
             <div class="w-48">
-                <Select ariaLabel="Playback speed" on:change="{handleSpeedChange}">
-                    <option value="{500}">Slow</option>
-                    <option value="{250}" selected>Normal speed</option>
-                    <option value="{100}">Fast</option>
+                <Select
+                    ariaLabel="Playback speed"
+                    defaultValue="{$evolutionSpeed}"
+                    on:change="{handleSpeedChange}"
+                >
+                    <option value="slow">Slow</option>
+                    <option value="default" selected>Normal speed</option>
+                    <option value="fast">Fast</option>
                 </Select>
             </div>
         </div>
