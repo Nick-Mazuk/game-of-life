@@ -44,7 +44,6 @@
     const handleSpeedChange = (event: CustomEvent<EvolutionSpeed>) => {
         evolutionSpeed.set(event.detail)
     }
-
 </script>
 
 <Seo title="" siteName="{import.meta.env.VITE_PUBLIC_SITE_NAME}" />

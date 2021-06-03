@@ -8,7 +8,6 @@
         primary: 'bg-primary',
         success: 'bg-success',
     }
-
 </script>
 
 <div class="relative aspect-w-1 aspect-h-1">

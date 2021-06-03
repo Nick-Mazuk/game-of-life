@@ -6,7 +6,6 @@
     import { BOARD_HEIGHT, BOARD_WIDTH } from '$lib/constants'
     import { board } from '$lib/stores/board'
     import Square from '$lib/components/square.svelte'
-
 </script>
 
 {#if browser}

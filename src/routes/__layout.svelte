@@ -16,7 +16,6 @@
     import { board } from '$lib/stores/board'
 
     const githubRepoUrl = 'https://github.com/Nick-Mazuk/game-of-life'
-
 </script>
 
 <ResetItems />

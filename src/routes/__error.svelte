@@ -9,7 +9,6 @@
             },
         }
     }
-
 </script>
 
 <script lang="ts">
@@ -19,7 +18,6 @@
 
     export let status: number
     export let error: Error
-
 </script>
 
 {#if status === 404}
