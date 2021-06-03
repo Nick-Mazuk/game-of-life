@@ -49,39 +49,46 @@
 
 <Seo title="" siteName="{import.meta.env.VITE_PUBLIC_SITE_NAME}" />
 
-<main class="wrapper my-8 flex flex-col space-y-8">
-    <BoardContainer />
-    <div class="flex flex-col md:flex-row items-center space-y-6 md:space-y-0">
-        <div class="w-full flex justify-center md:justify-start">
-            <div class="w-48">
-                <Select
-                    ariaLabel="Playback speed"
-                    defaultValue="{$evolutionSpeed}"
-                    on:change="{handleSpeedChange}"
-                >
-                    <option value="slow">Slow</option>
-                    <option value="default" selected>Normal speed</option>
-                    <option value="fast">Fast</option>
-                </Select>
+<main id="main-content">
+    <h1 class="sr-only">Game of life</h1>
+    <div class="wrapper my-8 flex flex-col space-y-8">
+        <BoardContainer />
+        <div class="flex flex-col md:flex-row items-center space-y-6 md:space-y-0">
+            <div class="w-full flex justify-center md:justify-start">
+                <div class="w-48">
+                    <Select
+                        ariaLabel="Evolution speed"
+                        defaultValue="{$evolutionSpeed}"
+                        on:change="{handleSpeedChange}"
+                    >
+                        <option value="slow">Slow</option>
+                        <option value="default" selected>Normal speed</option>
+                        <option value="fast">Fast</option>
+                    </Select>
+                </div>
             </div>
-        </div>
-        <div class="flex-none flex items-center space-x-4">
-            <Button on:click="{handleEvolvingClick}" prefix="{isEvolving ? Pause : Play}">
-                Evolve
-            </Button>
-            <Button
-                on:click="{() => board.evolve()}"
-                suffix="{ChevronRight}"
-                variant="secondary"
-                disabled="{isEvolving}"
-            >
-                Next generation
-            </Button>
-        </div>
-        <div class="w-full flex justify-center md:justify-end">
-            <Button on:click="{() => board.reset()}" variant="secondary" disabled="{isEvolving}">
-                Reset
-            </Button>
+            <div class="flex-none flex items-center space-x-4">
+                <Button on:click="{handleEvolvingClick}" prefix="{isEvolving ? Pause : Play}">
+                    Evolve
+                </Button>
+                <Button
+                    on:click="{() => board.evolve()}"
+                    suffix="{ChevronRight}"
+                    variant="secondary"
+                    disabled="{isEvolving}"
+                >
+                    Next generation
+                </Button>
+            </div>
+            <div class="w-full flex justify-center md:justify-end">
+                <Button
+                    on:click="{() => board.reset()}"
+                    variant="secondary"
+                    disabled="{isEvolving}"
+                >
+                    Reset
+                </Button>
+            </div>
         </div>
     </div>
 </main>

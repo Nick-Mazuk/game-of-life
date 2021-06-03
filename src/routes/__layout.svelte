@@ -24,8 +24,10 @@
 <Header sticky>
     <svelte:fragment slot="left">
         <HeaderBrand text="Game of life" />
-        <HeaderItemWrapper>
-            <p>Generation: {browser ? $board.generation : '--'}</p>
+    </svelte:fragment>
+    <svelte:fragment slot="center">
+        <HeaderItemWrapper breakpoint="none">
+            <p data-test="generation">Generation: {browser ? $board.generation : '--'}</p>
         </HeaderItemWrapper>
     </svelte:fragment>
 
