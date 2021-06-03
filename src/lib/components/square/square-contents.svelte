@@ -1,5 +1,3 @@
-<svelte:options immutable />
-
 <script lang="ts">
     import { fade, scale } from 'svelte/transition'
     import { TRANSITION_SPEED_MAP } from '@nick-mazuk/ui-svelte/src/configs/transitions'

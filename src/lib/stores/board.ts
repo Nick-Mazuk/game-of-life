@@ -1,7 +1,11 @@
 import { writable } from 'svelte/store'
 
-import { BOARD_WIDTH, BOARD_HEIGHT, SQUARE_TYPE_ARRAY } from '$lib/constants'
+import { BOARD_WIDTH, BOARD_HEIGHT, SQUARE_PROBABILITY } from '$lib/constants'
 import type { Board, SquareType } from '$lib/types'
+
+const pickRandomSquare = (): SquareType => {
+    return SQUARE_PROBABILITY[Math.floor(Math.random() * SQUARE_PROBABILITY.length)]
+}
 
 const generateNewSquares = (): SquareType[][] => {
     const squares: SquareType[][] = []
@@ -9,12 +13,79 @@ const generateNewSquares = (): SquareType[][] => {
     for (let rowCount = 0; rowCount < BOARD_WIDTH; rowCount++) {
         const row: SquareType[] = []
 
-        for (let colCount = 0; colCount < BOARD_HEIGHT; colCount++)
-            row.push(SQUARE_TYPE_ARRAY[Math.floor(Math.random() * SQUARE_TYPE_ARRAY.length)])
+        for (let colCount = 0; colCount < BOARD_HEIGHT; colCount++) row.push(pickRandomSquare())
 
         squares.push(row)
     }
 
+    return squares
+}
+
+const getNeighbors = (
+    squares: SquareType[][],
+    row: number,
+    col: number
+): { primaryNeighbors: number; successNeighbors: number; deadNeighbors: number } => {
+    const previousRow = (row + BOARD_HEIGHT - 1) % BOARD_HEIGHT
+    const nextRow = (row + 1) % BOARD_HEIGHT
+    const previousColumn = (col + BOARD_WIDTH - 1) % BOARD_WIDTH
+    const nextColumn = (col + 1) % BOARD_WIDTH
+
+    const neighbors: SquareType[] = []
+    neighbors.push(squares[previousRow][previousColumn])
+    neighbors.push(squares[previousRow][col])
+    neighbors.push(squares[previousRow][nextColumn])
+    neighbors.push(squares[row][previousColumn])
+    neighbors.push(squares[row][nextColumn])
+    neighbors.push(squares[nextRow][previousColumn])
+    neighbors.push(squares[nextRow][col])
+    neighbors.push(squares[nextRow][nextColumn])
+
+    let primaryNeighbors = 0
+    let successNeighbors = 0
+    let deadNeighbors = 0
+
+    neighbors.forEach((neighbor) => {
+        if (neighbor === 'primary') primaryNeighbors++
+        else if (neighbor === 'success') successNeighbors++
+        else deadNeighbors++
+    })
+
+    return { primaryNeighbors, successNeighbors, deadNeighbors }
+}
+
+const getSquareNextValue = (
+    squares: SquareType[][],
+    row: number,
+    col: number,
+    currentValue: SquareType
+): SquareType => {
+    const { primaryNeighbors, successNeighbors, deadNeighbors } = getNeighbors(squares, row, col)
+    if (currentValue === 'dead') {
+        if (primaryNeighbors >= 3 && successNeighbors <= 2) return 'primary'
+        if (successNeighbors >= 3 && primaryNeighbors <= 2) return 'success'
+        return 'dead'
+    }
+    const sameNeighbors = currentValue === 'primary' ? primaryNeighbors : successNeighbors
+    const differentNeighbors = currentValue === 'primary' ? successNeighbors : primaryNeighbors
+    const totalNeighbors = primaryNeighbors + successNeighbors
+    if (totalNeighbors < 2 || totalNeighbors > 3) return 'dead'
+    if (differentNeighbors > sameNeighbors) return 'dead'
+    return currentValue
+}
+
+const evolve = (previous: SquareType[][]): SquareType[][] => {
+    console.time('evolve')
+    const squares: SquareType[][] = []
+    for (const [row, rowElement] of previous.entries()) {
+        const rowArray: SquareType[] = []
+
+        for (const [col, square] of rowElement.entries())
+            rowArray.push(getSquareNextValue(previous, row, col, square))
+
+        squares.push(rowArray)
+    }
+    console.timeEnd('evolve')
     return squares
 }
 
@@ -36,7 +107,7 @@ const createBoard = () => {
             update((previous) => {
                 return {
                     generation: previous.generation + 1,
-                    squares: generateNewSquares(),
+                    squares: evolve(previous.squares),
                 }
             })
         },
