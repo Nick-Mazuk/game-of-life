@@ -3,6 +3,8 @@ import { writable } from 'svelte/store'
 import { BOARD_WIDTH, BOARD_HEIGHT, SQUARE_PROBABILITY } from '$lib/constants'
 import type { Board, SquareType } from '$lib/types'
 
+const localStorageKey = 'gol-board'
+
 const pickRandomSquare = (): SquareType => {
     return SQUARE_PROBABILITY[Math.floor(Math.random() * SQUARE_PROBABILITY.length)]
 }
@@ -111,9 +113,22 @@ const createBoard = () => {
                 }
             })
         },
+        set,
     }
 }
 
 const board = createBoard()
+
+const setupEvolutionSpeed = () => {
+    const savedBoard = localStorage.getItem(localStorageKey)
+
+    if (savedBoard) board.set(JSON.parse(savedBoard))
+
+    board.subscribe((currentBoard) => {
+        localStorage.setItem(localStorageKey, JSON.stringify(currentBoard))
+    })
+}
+
+if (typeof window !== 'undefined') setupEvolutionSpeed()
 
 export { board }

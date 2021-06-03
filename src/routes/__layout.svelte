@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { browser } from '$app/env'
+
     import Header from '@nick-mazuk/ui-svelte/src/components/header/header.svelte'
     import HeaderBrand from '@nick-mazuk/ui-svelte/src/components/header/header-brand/header-brand.svelte'
     import HeaderItemWrapper from '@nick-mazuk/ui-svelte/src/components/header/header-item-wrapper/header-item-wrapper.svelte'
@@ -23,7 +25,7 @@
     <svelte:fragment slot="left">
         <HeaderBrand text="Game of life" />
         <HeaderItemWrapper>
-            <p>Generation: {$board.generation}</p>
+            <p>Generation: {browser ? $board.generation : '--'}</p>
         </HeaderItemWrapper>
     </svelte:fragment>
 

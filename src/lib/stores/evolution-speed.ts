@@ -19,8 +19,8 @@ const createEvolutionSpeed = () => {
 const evolutionSpeed = createEvolutionSpeed()
 
 const handleLocalStorageChange = () => {
-    const theme = localStorage.getItem(localStorageKey) as EvolutionSpeed | null
-    if (theme) evolutionSpeed.set(theme)
+    const savedSpeed = localStorage.getItem(localStorageKey) as EvolutionSpeed | null
+    if (savedSpeed) evolutionSpeed.set(savedSpeed)
 }
 
 const setupEvolutionSpeed = () => {
