@@ -1,29 +1,32 @@
 <script lang="ts">
-    import { onDestroy } from 'svelte'
-
     import Seo from '@nick-mazuk/ui-svelte/src/utilities/seo/seo.svelte'
     import Button from '@nick-mazuk/ui-svelte/src/elements/button/button.svelte'
     import Play from '@nick-mazuk/ui-svelte/src/elements/icon/play.svelte'
     import Pause from '@nick-mazuk/ui-svelte/src/elements/icon/pause.svelte'
     import ChevronRight from '@nick-mazuk/ui-svelte/src/elements/icon/chevron-right.svelte'
+    import Select from '@nick-mazuk/ui-svelte/src/form/inputs/select/select.svelte'
 
     import BoardContainer from '$lib/components/board-container.svelte'
     import { board } from '$lib/stores/board'
 
-    let interval: NodeJS.Timeout | undefined
-    $: isEvolving = typeof interval !== 'undefined'
+    let interval = 250
+    let isEvolving = false
+
+    const timeoutFunction = () => {
+        if (!isEvolving) return
+        board.evolve()
+        setTimeout(() => {
+            timeoutFunction()
+        }, interval)
+    }
 
     const startEvolving = () => {
         isEvolving = true
-        interval = setInterval(() => {
-            board.evolve()
-        }, 250)
+        timeoutFunction()
     }
 
     const stopEvolving = () => {
-        if (interval) clearInterval(interval)
         isEvolving = false
-        interval = undefined
     }
 
     const handleEvolvingClick = () => {
@@ -31,9 +34,9 @@
         else startEvolving()
     }
 
-    onDestroy(() => {
-        if (interval) clearInterval(interval)
-    })
+    const handleSpeedChange = (event: CustomEvent<number>) => {
+        interval = event.detail
+    }
 
 </script>
 
@@ -41,18 +44,21 @@
 
 <main class="wrapper my-8 flex flex-col space-y-8">
     <BoardContainer />
-    <div class="flex items-center">
-        <p class="w-full">Generation: {$board.generation}</p>
+    <div class="flex flex-col md:flex-row items-center space-y-6 md:space-y-0">
+        <div class="w-full flex justify-center md:justify-start">
+            <div class="w-48">
+                <Select ariaLabel="Playback speed" on:change="{handleSpeedChange}">
+                    <option value="{500}">Slow</option>
+                    <option value="{250}" selected>Normal speed</option>
+                    <option value="{100}">Fast</option>
+                </Select>
+            </div>
+        </div>
         <div class="flex-none flex items-center space-x-4">
-            <Button
-                size="small"
-                on:click="{handleEvolvingClick}"
-                prefix="{isEvolving ? Pause : Play}"
-            >
+            <Button on:click="{handleEvolvingClick}" prefix="{isEvolving ? Pause : Play}">
                 Evolve
             </Button>
             <Button
-                size="small"
                 on:click="{() => board.evolve()}"
                 suffix="{ChevronRight}"
                 variant="secondary"
@@ -61,13 +67,8 @@
                 Next generation
             </Button>
         </div>
-        <div class="w-full flex justify-end">
-            <Button
-                size="small"
-                on:click="{() => board.reset()}"
-                variant="secondary"
-                disabled="{isEvolving}"
-            >
+        <div class="w-full flex justify-center md:justify-end">
+            <Button on:click="{() => board.reset()}" variant="secondary" disabled="{isEvolving}">
                 Reset
             </Button>
         </div>

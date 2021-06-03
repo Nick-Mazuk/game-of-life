@@ -1,6 +1,7 @@
 <script lang="ts">
     import Header from '@nick-mazuk/ui-svelte/src/components/header/header.svelte'
     import HeaderBrand from '@nick-mazuk/ui-svelte/src/components/header/header-brand/header-brand.svelte'
+    import HeaderItemWrapper from '@nick-mazuk/ui-svelte/src/components/header/header-item-wrapper/header-item-wrapper.svelte'
     import HeaderLink from '@nick-mazuk/ui-svelte/src/components/header/header-link/header-link.svelte'
     import DarkModeSelect from '@nick-mazuk/ui-svelte/src/elements/dark-mode-select/dark-mode-select.svelte'
     import Github from '@nick-mazuk/ui-svelte/src/elements/icon/github.svelte'
@@ -10,6 +11,7 @@
 
     import ResetItems from '$lib/components/reset-items.svelte'
     import { darkMode } from '$lib/stores/dark-mode'
+    import { board } from '$lib/stores/board'
 
     const githubRepoUrl = 'https://github.com/Nick-Mazuk/game-of-life'
 
@@ -20,6 +22,9 @@
 <Header sticky>
     <svelte:fragment slot="left">
         <HeaderBrand text="Game of life" />
+        <HeaderItemWrapper>
+            <p>Generation: {$board.generation}</p>
+        </HeaderItemWrapper>
     </svelte:fragment>
 
     <svelte:fragment slot="right">
