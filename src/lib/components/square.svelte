@@ -11,4 +11,6 @@
 
 </script>
 
-<div class="rounded {TYPE_MAP[type]}"></div>
+<div class="relative aspect-w-1 aspect-h-1">
+    <div class="absolute inset-0 rounded-sm {TYPE_MAP[type]}"></div>
+</div>
