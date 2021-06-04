@@ -19,7 +19,7 @@ Each square of the grid (or pixel on the screen) represents one organism of the 
 
 Because of the addition of the second species, a new one is added:
 
-- If a square has is surrounded by more of its opposing species than its own, then it will die
+-   If a square has is surrounded by more of its opposing species than its own, then it will die
 
 To make the final product have some aesthetic pleasure, some of the numbers for the other rules changed leaving the final rule set:
 
