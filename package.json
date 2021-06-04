@@ -45,6 +45,6 @@
     "dependencies": {
         "@nick-mazuk/lib": "^0.8.49",
         "@nick-mazuk/ui-svelte": "^0.15.3",
-        "@sveltejs/adapter-vercel": "^1.0.0-next.17"
+        "@sveltejs/adapter-static": "^1.0.0-next.13"
     }
 }

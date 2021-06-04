@@ -6,7 +6,7 @@ specifiers:
   '@nick-mazuk/sveltekit-cli': ^1.2.2
   '@nick-mazuk/ui-config': ^0.10.45
   '@nick-mazuk/ui-svelte': ^0.15.3
-  '@sveltejs/adapter-vercel': ^1.0.0-next.17
+  '@sveltejs/adapter-static': ^1.0.0-next.13
   '@sveltejs/kit': ^1.0.0-next.107
   autoprefixer: ^10.2.5
   cypress: ^7.2.0
@@ -29,7 +29,7 @@ specifiers:
 dependencies:
   '@nick-mazuk/lib': 0.8.54
   '@nick-mazuk/ui-svelte': 0.15.3_bf3f262cd8dbedd87b36d2ff5c4995e5
-  '@sveltejs/adapter-vercel': 1.0.0-next.20_@sveltejs+kit@1.0.0-next.111
+  '@sveltejs/adapter-static': 1.0.0-next.13
 
 devDependencies:
   '@nick-mazuk/eslint-config': 0.8.11_a7bc5f3251cb637e590626d3a6519d83
@@ -485,13 +485,8 @@ packages:
       rxjs: 6.6.7
     dev: true
 
-  /@sveltejs/adapter-vercel/1.0.0-next.20_@sveltejs+kit@1.0.0-next.111:
-    resolution: {integrity: sha512-cSGFym8Ap13p1uMBG3YQyy2Ut0eIjIjbRMtngGLUxi1guSkt1yoHytoW41O0koinrN43paKsym6Q5pO8tfX+Hg==}
-    peerDependencies:
-      '@sveltejs/kit': 1.0.0-next.110
-    dependencies:
-      '@sveltejs/kit': 1.0.0-next.111_svelte@3.38.2
-      esbuild: 0.11.23
+  /@sveltejs/adapter-static/1.0.0-next.13:
+    resolution: {integrity: sha512-zaXJlWK9JfrjrE6nG5etB8kf4DSkbE3H8Ql6gmCk3WjdvpY85a60TMYBU9OK2iunkqpHnPYiMUGEnOGYmWlLYA==}
     dev: false
 
   /@sveltejs/kit/1.0.0-next.111_svelte@3.38.2:
@@ -1816,6 +1811,7 @@ packages:
     resolution: {integrity: sha512-iaiZZ9vUF5wJV8ob1tl+5aJTrwDczlvGP0JoMmnpC2B0ppiMCu8n8gmy5ZTGl5bcG081XBVn+U+jP+mPFm5T5Q==}
     hasBin: true
     requiresBuild: true
+    dev: true
 
   /escalade/3.1.1:
     resolution: {integrity: sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==}
