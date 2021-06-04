@@ -19,7 +19,7 @@ specifiers:
   prettier: ^2.2.1
   prettier-plugin-svelte: ^2.2.0
   svelte: ^3.38.2
-  svelte-check: ^1.5.2
+  svelte-check: ^2.0.0
   svelte-preprocess: ^4.7.3
   tailwindcss: ^2.1.2
   tslib: ^2.2.0
@@ -47,7 +47,7 @@ devDependencies:
   prettier: 2.3.0
   prettier-plugin-svelte: 2.3.0_prettier@2.3.0+svelte@3.38.2
   svelte: 3.38.2
-  svelte-check: 1.6.0_98db3e04868c8b1b4a541d81d8c3c555
+  svelte-check: 2.1.0_98db3e04868c8b1b4a541d81d8c3c555
   svelte-preprocess: 4.7.3_ddfd8490a44ef0de606159ff3aef985a
   tailwindcss: 2.1.2_6daa0ece57b4377652e73c9c66c3b94c
   tslib: 2.2.0
@@ -4245,8 +4245,8 @@ packages:
       has-flag: 4.0.0
     dev: true
 
-  /svelte-check/1.6.0_98db3e04868c8b1b4a541d81d8c3c555:
-    resolution: {integrity: sha512-nQTlbFJWhwoeLY5rkhgbjzGQSwk5F1pRdEXait0EFaQSrE/iJF+PIjrQlk0BjL/ogk9HaR9ZI0DQSYrl7jl3IQ==}
+  /svelte-check/2.1.0_98db3e04868c8b1b4a541d81d8c3c555:
+    resolution: {integrity: sha512-kKLXkFt0XZTn+O1fnilGTQ1SFLsOFF+lXp1YjPfeN9nX+Y3ZpELtZSQCkbuK6HMkWugFvsOM17FCOSa1mfrEFA==}
     hasBin: true
     peerDependencies:
       svelte: ^3.24.0
