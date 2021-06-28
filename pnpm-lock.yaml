@@ -5,7 +5,7 @@ specifiers:
   '@nick-mazuk/lib': ^0.8.49
   '@nick-mazuk/sveltekit-cli': ^1.2.2
   '@nick-mazuk/ui-config': ^0.10.45
-  '@nick-mazuk/ui-svelte': ^0.18.0
+  '@nick-mazuk/ui-svelte': ^0.20.0
   '@sveltejs/adapter-static': ^1.0.0-next.13
   '@sveltejs/kit': ^1.0.0-next.107
   autoprefixer: ^10.2.5
@@ -28,7 +28,7 @@ specifiers:
 
 dependencies:
   '@nick-mazuk/lib': 0.8.54
-  '@nick-mazuk/ui-svelte': 0.18.0_1008019922e239ab4578f22d7585e266
+  '@nick-mazuk/ui-svelte': 0.20.0_1008019922e239ab4578f22d7585e266
   '@sveltejs/adapter-static': 1.0.0-next.13
 
 devDependencies:
@@ -421,8 +421,8 @@ packages:
       tailwindcss: 2.2.4_72be89de93206f86f2d67dd5290ec14d
     dev: true
 
-  /@nick-mazuk/ui-svelte/0.18.0_1008019922e239ab4578f22d7585e266:
-    resolution: {integrity: sha512-WHIvCDOEobLD4sIumu0GZV5qWNQq9lku+hVExk6r5QIUcUIA7FDJDE0Xbz5k0weanvxzvhh479uhc9E9nDxl9Q==}
+  /@nick-mazuk/ui-svelte/0.20.0_1008019922e239ab4578f22d7585e266:
+    resolution: {integrity: sha512-aSt8m68I4Hu6JDqxSW3iwgoN7F2X7Ssqe97fY5yiWFE25Nb0KfQNxRKlbw7FGDoN62lC9WBBF8mJ8f3BdW+DOA==}
     peerDependencies:
       '@nick-mazuk/lib': ^0.8.50
       '@nick-mazuk/ui-config': ^0.10.61
