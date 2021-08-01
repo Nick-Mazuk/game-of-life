@@ -9,7 +9,7 @@ specifiers:
   '@sveltejs/adapter-static': ^1.0.0-next.13
   '@sveltejs/kit': ^1.0.0-next.107
   autoprefixer: ^10.2.5
-  cypress: ^7.2.0
+  cypress: ^8.0.0
   cypress-axe: ^0.12.2
   cypress-plugin-tab: ^1.0.5
   cypress-real-events: ^1.4.0
@@ -37,10 +37,10 @@ devDependencies:
   '@nick-mazuk/ui-config': 0.10.62_tailwindcss@2.2.4
   '@sveltejs/kit': 1.0.0-next.120_svelte@3.38.3
   autoprefixer: 10.2.6_postcss@8.3.5
-  cypress: 7.6.0
-  cypress-axe: 0.12.2_cypress@7.6.0
+  cypress: 8.1.0
+  cypress-axe: 0.12.2_cypress@8.1.0
   cypress-plugin-tab: 1.0.5
-  cypress-real-events: 1.5.0_cypress@7.6.0
+  cypress-real-events: 1.5.0_cypress@8.1.0
   eslint: 7.30.0
   postcss: 8.3.5
   postcss-load-config: 3.1.0
@@ -830,7 +830,7 @@ packages:
   /@types/yauzl/2.9.2:
     resolution: {integrity: sha512-8uALY5LTvSuHgloDVUvWP3pIauILm+8/0pDMokuDYIoNsOkSwd5AiHBTSEJjKTDcZr5z8UpgOWZkxBF4iJftoA==}
     dependencies:
-      '@types/node': 14.17.4
+      '@types/node': 16.0.0
     dev: true
     optional: true
 
@@ -1512,14 +1512,14 @@ packages:
     hasBin: true
     dev: true
 
-  /cypress-axe/0.12.2_cypress@7.6.0:
+  /cypress-axe/0.12.2_cypress@8.1.0:
     resolution: {integrity: sha512-gn+rVJ2JnvUWhBshbZ/8dkJdANaEB96zgtAEClJ7vNvDgmqAYb+HhQpW0GM04EqtIiPhenqUeKNQDoqrquY5+w==}
     engines: {node: '>=10'}
     peerDependencies:
       axe-core: ^3 || ^4
       cypress: ^3 || ^4 || ^5 || ^6
     dependencies:
-      cypress: 7.6.0
+      cypress: 8.1.0
     dev: true
 
   /cypress-plugin-tab/1.0.5:
@@ -1528,16 +1528,16 @@ packages:
       ally.js: 1.4.1
     dev: true
 
-  /cypress-real-events/1.5.0_cypress@7.6.0:
+  /cypress-real-events/1.5.0_cypress@8.1.0:
     resolution: {integrity: sha512-5virdYmZmtnpVqX4U0Ht66985b5MpCHE6icDXReQGognja5d2FuRD+Hh2MqzJqOTmai74z50u5+nmTZ/Dn/VcQ==}
     peerDependencies:
       cypress: ^4.x || ^5.x || ^6.x || ^7.x
     dependencies:
-      cypress: 7.6.0
+      cypress: 8.1.0
     dev: true
 
-  /cypress/7.6.0:
-    resolution: {integrity: sha512-tTwQExY28CKt6cY85/2V1uLExcMfpBEBWXt/EcE2ht/Onl9k4lxUS7ul1UnUO5MrYwMIHMdGVh13DxdzXj4Z5w==}
+  /cypress/8.1.0:
+    resolution: {integrity: sha512-GXjlqPjY/6HPbQwAp3AvlA1Mk/NoJTAmqVSUhQsuM/1xDpd/FQHkxVuq5h6O6RrAoCXSgpZPXFsVtdqE+FwEJw==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     requiresBuild: true
@@ -3597,7 +3597,7 @@ packages:
   /querystring/0.2.0:
     resolution: {integrity: sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=}
     engines: {node: '>=0.4.x'}
-    deprecated: The
+    deprecated: The querystring API is considered Legacy. new code should use the URLSearchParams API instead.
     dev: true
 
   /queue-microtask/1.2.3:
