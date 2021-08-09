@@ -10,7 +10,7 @@ specifiers:
   '@sveltejs/kit': ^1.0.0-next.107
   autoprefixer: ^10.2.5
   cypress: ^8.0.0
-  cypress-axe: ^0.12.2
+  cypress-axe: ^0.13.0
   cypress-plugin-tab: ^1.0.5
   cypress-real-events: ^1.4.0
   eslint: ^7.25.0
@@ -38,7 +38,7 @@ devDependencies:
   '@sveltejs/kit': 1.0.0-next.144_svelte@3.42.1
   autoprefixer: 10.3.1_postcss@8.3.6
   cypress: 8.2.0
-  cypress-axe: 0.12.2_cypress@8.2.0
+  cypress-axe: 0.13.0_cypress@8.2.0
   cypress-plugin-tab: 1.0.5
   cypress-real-events: 1.5.1_cypress@8.2.0
   eslint: 7.32.0
@@ -1501,12 +1501,12 @@ packages:
     hasBin: true
     dev: true
 
-  /cypress-axe/0.12.2_cypress@8.2.0:
-    resolution: {integrity: sha512-gn+rVJ2JnvUWhBshbZ/8dkJdANaEB96zgtAEClJ7vNvDgmqAYb+HhQpW0GM04EqtIiPhenqUeKNQDoqrquY5+w==}
+  /cypress-axe/0.13.0_cypress@8.2.0:
+    resolution: {integrity: sha512-fCIy7RiDCm7t30U3C99gGwQrUO307EYE1QqXNaf9ToK4DVqW8y5on+0a/kUHMrHdlls2rENF6TN9ZPpPpwLrnw==}
     engines: {node: '>=10'}
     peerDependencies:
       axe-core: ^3 || ^4
-      cypress: ^3 || ^4 || ^5 || ^6
+      cypress: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
     dependencies:
       cypress: 8.2.0
     dev: true
