@@ -30,7 +30,7 @@
         "cypress-plugin-tab": "^1.0.5",
         "cypress-real-events": "^1.4.0",
         "eslint": "^7.25.0",
-        "postcss": "^8.2.13",
+        "postcss": "^8.4.31",
         "postcss-load-config": "^3.0.1",
         "prettier": "^2.2.1",
         "prettier-plugin-svelte": "^2.2.0",
